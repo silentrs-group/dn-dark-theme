@@ -3,6 +3,9 @@
  * Original modena.css here: https://gist.github.com/maxd/63691840fc372f22f470.
  */
 @import "modena.css";
+@import "menu-bar.css";
+@import "tabs.css";
+@import "scroll-bar.css";
 
 /* Redefine base colors */
 .root {
@@ -31,6 +34,33 @@
 
     -fx-link-color: #ff5500;
 
+    /* @section menu and context-menu */
+    -fx-menu-color: derive(#272B33, 10%);
+    -fx-menu-color-hover: derive(-fx-menu-color, -10%);
+
+    /* @section active tab */
+    -fx-tab-active-color: -fx-control-inner-background-alt;
+    -fx-tab-active-border-color: rgba(255, 255, 255, 0.2);
+    -fx-tab-active-text-color: -fx-light-text-color;
+
+    /* @section inactive tab */
+    -fx-tab-inactive-color: transparent;
+    -fx-tab-inactive-border-color: rgba(255, 255, 255, 0.2);
+    -fx-tab-inactive-text-color: -fx-mid-text-color;
+
+    /* @section inactive hover tab */
+    -fx-tab-inactive-color-hover: -fx-control-inner-background-alt;
+    -fx-tab-inactive-border-color-hover: rgba(255, 255, 255, 0.2);
+    -fx-tab-inactive-text-color-hover: -fx-light-text-color;
+
+    /* @section scroll-bar */
+    -fx-scroll-bar-background-color: transparent;
+    -fx-scroll-bar-thumb-color: derive(-fx-background, 50%);
+
+
+
+
+
     -border-color: derive(-fx-background, 30%);
     -text-color: rgb(220, 220, 220);
 
@@ -42,7 +72,6 @@
     -fx-inner-border: transparent;
 }
 
-
 * {
     -fx-text-fill: -fx-light-text-color;
 }
@@ -51,6 +80,11 @@
 /* Fix derived prompt color for text fields */
 .text-input {
     -fx-prompt-text-fill: derive(-fx-control-inner-background, +50%);
+}
+
+/* Keep prompt invisible when focused (above color fix overrides it) */
+.text-input:focused {
+    -fx-prompt-text-fill: transparent;
 }
 
 
@@ -69,43 +103,6 @@
 .dn-mosaic-background {
     -fx-background-color: -fx-color;
 }
-
-/* context / menu bar */
-.menu {
-    -fx-padding: 0 10;
-    -fx-background-color: -fx-color;
-}
-
-.menu-bar,
-.context-menu,
-.menu,
-.menu-item {
-    -fx-background-color: -fx-color;
-}
-
-.menu-bar .menu {
-    -fx-padding: 3 10;
-}
-
-.context-menu {
-    -fx-border-color: -fx-control-inner-background;
-}
-
-.menu-item {
-    -fx-padding: 5 8;
-    -fx-background-color: -fx-color;
-}
-
-.menu-item:focused, .menu-item:hover,
-.menu:hover, .menu:focused {
-    -fx-background-color: #FFFFFF0F;
-}
-
-.menu-item:focused, .menu-item:hover,
-.menu:hover, .menu:focused {
-    -fx-focus-color: #FFFFFF0F;
-}
-
 
 /* Список компонентов в конструкоре формы, элементы списка (модули, формы, пакеты) */
 .dn-simple-toggle-button {
@@ -127,100 +124,10 @@
 }
 
 
-.dn-file-tab-pane,
-    /*.dn-file-tab-pane .tab-header-area,
-    .dn-file-tab-pane .tab-header-area .headers-region,
-    .dn-file-tab-pane .tab-header-area .tab-header-background,*/
-.dn-file-tab-pane .tab-content-area,
-#fileTabPane,
-    /*#fileTabPane .tab-header-area,
-    #fileTabPane .tab-header-area .headers-region,*/
-#fileTabPane .tab-header-area .tab-header-background,
-#fileTabPane .tab-content-area {
-    -fx-background-color: -fx-color !important;
-    -fx-border-color: -fx-control-inner-background-alt;
-
-}
-
-/*#fileTabPane .tab-header-area .tab-header-background {
-    -fx-border-color: -fx-link-color;
-}
-
-#fileTabPane .tab-header-area .tab-header-background {
-    -fx-border-width: 0 0 2 0;
-}*/
-
-/*#fileTabPane  .tab-header-area > .headers-region > .tab {*/
-#fileTabPane .tab-header-area > .headers-region > .tab {
-    -fx-border-radius: 5 5 0 0 !important;
-    -fx-background-radius: 5 5 0 0 !important;
-
-    -fx-border-width: 1 1 0 1;
-    -fx-border-color: transparent;
-
-    -fx-background-color: transparent;
-    /*-fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;*/
-}
-
-#fileTabPane .tab-header-area > .headers-region > .control-buttons-tab,
-#fileTabPane .tab-header-area > .headers-region >.tab:hover,
-#fileTabPane .tab-header-area > .headers-region >.tab:selected {
-    -fx-border-color: rgba(255, 255, 255, 0.2);
-    /*-fx-border-color: -fx-link-color;*/
-
-    -fx-background-color: -fx-control-inner-background-alt;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
-
-
-#fileTabPane .control-buttons-tab > .container > .tab-down-button * {
-    -fx-text-fill: white !important;
-}
-
-
-#fileTabPane .tab .tab-label {
-    -fx-text-fill: -fx-mid-text-color;
-    -fx-padding: 4 5;
-}
-
-#fileTabPane .tab:hover .tab-label,
-#fileTabPane .tab:selected .tab-label {
-    -fx-text-fill: -fx-light-text-color;
-}
-
-/* Keep prompt invisible when focused (above color fix overrides it) */
-.text-input:focused {
-    -fx-prompt-text-fill: transparent;
-}
-
 /* вроде как класс существет, а вот стили не применяются */
-.scroll-pane.dn-web > .viewport,
-.property-editor {
+.scroll-pane.dn-web > .viewport {
     -fx-background-color: green !important;
     -fx-text-fill: green !important;
-}
-
-/* Fix scroll bar buttons arrows colors */
-.scroll-bar > .increment-button > .increment-arrow,
-.scroll-bar > .decrement-button > .decrement-arrow {
-    -fx-background-color: -border-color, rgb(220, 220, 220);
-}
-
-.scroll-bar > .increment-button:hover > .increment-arrow,
-.scroll-bar > .decrement-button:hover > .decrement-arrow {
-    -fx-background-color: -border-color, rgb(240, 240, 240);
-}
-
-.scroll-bar > .increment-button:pressed > .increment-arrow,
-.scroll-bar > .decrement-button:pressed > .decrement-arrow {
-    -fx-background-color: -border-color, rgb(255, 255, 255);
-}
-
-.scroll-bar .thumb  {
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-background-color: derive(-fx-background, 50%);
 }
 
 .tree-cell .tree-disclosure-node > .arrow {
@@ -243,8 +150,6 @@
 /*#bottomSpoiler {
     -fx-border-color: transparent;
 }*/
-
-/* контейнер с консолью вывода приложения при его запуске */
 /*#bottomSpoiler * {
     -fx-background-color: -fx-color !important;
     -fx-text-fill: -fx-light-text-color;
@@ -265,7 +170,8 @@
 }
 
 .dn-console-list,
-#consoleArea {
+#consoleArea /* контейнер с консолью вывода приложения при его запуске */
+{
     -fx-background-color: derive(-fx-base, 80%) !important;
     -fx-border-color: -fx-control-inner-background;
 }
@@ -279,7 +185,6 @@
     -fx-background-color: -fx-color;
     -fx-text-fill: -fx-light-text-color !important;
 }
-
 
 .button:hover {
     -fx-background-color: -fx-control-inner-background-alt;

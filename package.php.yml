@@ -10,6 +10,6 @@ develnext-bundle:
   version: 1.0.0
   name: dn-dark-theme
   author: silentrs
-  icon: icon32.png
+  icon: icons\icon32.png
   hidden: '1'
   class: develnext\bundle\darktheme\DarkThemeBundle

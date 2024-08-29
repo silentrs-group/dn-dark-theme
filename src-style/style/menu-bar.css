@@ -1,0 +1,29 @@
+.menu-bar .menu {
+    -fx-padding: 4 10;
+}
+
+.menu,
+.menu-bar {
+    -fx-background-color: -fx-menu-color;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+}
+
+/* цвет текста у элементов */
+.menu .label {
+    -fx-text-fill: -text-color;
+}
+
+/*когда выбран пункт в меню баре*/
+.menu:showing,
+.context-menu
+{
+    -fx-background-color: -fx-menu-color-hover;
+    -fx-border-color: -border-color;
+}
+
+.menu-item:hover {
+    -fx-background-color: -fx-menu-color;
+}

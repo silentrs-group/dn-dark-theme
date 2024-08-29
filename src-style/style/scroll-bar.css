@@ -1,0 +1,24 @@
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: -fx-scroll-bar-background-color, rgb(220, 220, 220);
+}
+
+.scroll-bar > .increment-button:hover > .increment-arrow,
+.scroll-bar > .decrement-button:hover > .decrement-arrow {
+    -fx-background-color: -fx-scroll-bar-background-color, rgb(240, 240, 240);
+}
+
+.scroll-bar > .increment-button:pressed > .increment-arrow,
+.scroll-bar > .decrement-button:pressed > .decrement-arrow {
+    -fx-background-color: -fx-scroll-bar-background-color, rgb(255, 255, 255);
+}
+
+.scroll-bar {
+    -fx-background-color: -fx-scroll-bar-background-color;
+}
+
+.scroll-bar .thumb  {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-background-color: -fx-scroll-bar-thumb-color;
+}

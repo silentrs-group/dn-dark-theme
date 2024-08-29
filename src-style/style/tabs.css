@@ -1,0 +1,61 @@
+
+.dn-file-tab-pane,
+.dn-file-tab-pane .tab-content-area,
+#fileTabPane,
+#fileTabPane .tab-header-area .tab-header-background,
+#fileTabPane .tab-content-area {
+    -fx-background-color: -fx-color !important;
+    -fx-border-color: -fx-control-inner-background-alt;
+}
+
+#fileTabPane .tab-header-area > .headers-region > .tab {
+    -fx-border-radius: 5 5 0 0 !important;
+    -fx-background-radius: 5 5 0 0 !important;
+
+    -fx-border-width: 1 1 0 1;
+    -fx-border-color: transparent;
+
+    -fx-background-color: transparent;
+}
+
+
+#fileTabPane .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: -fx-tab-active-color;
+    -fx-border-color: -fx-tab-active-border-color;
+}
+
+#fileTabPane .tab-header-area > .headers-region > .tab:hover {
+    -fx-background-color: -fx-tab-inactive-color-hover;
+    -fx-border-color: -fx-tab-inactive-border-color-hover;
+}
+
+#fileTabPane .tab-header-area > .headers-region > .control-buttons-tab {
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-background-color: -fx-tab-active-color;
+}
+
+#fileTabPane .tab-header-area > .headers-region > .tab:selected,
+#fileTabPane .tab-header-area > .headers-region > .control-buttons-tab,
+#fileTabPane .tab-header-area > .headers-region > .tab:hover {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+#fileTabPane .control-buttons-tab > .container > .tab-down-button * {
+    -fx-text-fill: -fx-tab-active-text-color !important;
+}
+
+
+#fileTabPane .tab .tab-label {
+    -fx-text-fill: -fx-tab-inactive-text-color;
+    -fx-padding: 4 5;
+}
+
+#fileTabPane .tab:hover .tab-label {
+    -fx-text-fill: -fx-tab-inactive-text-color-hover;
+}
+
+#fileTabPane .tab:selected .tab-label {
+    -fx-text-fill: -fx-tab-active-text-color;
+}
