@@ -86,7 +86,7 @@ class IDETheme
                 $item = $this->getLayout()->lookup("#content");
 
                 if (array_key_exists('children', get_class_vars($item))) {
-//                        Logger::info('.');
+
                     foreach ($item->children as $key => $node) {
                         if ($key == 3) {
                             if (!$node->classes->has("syncPane")) {
@@ -95,7 +95,6 @@ class IDETheme
                                     break 2;
                                 }
                             }
-                            continue;
                         }
                     }
 
@@ -103,6 +102,20 @@ class IDETheme
                 }
 
                 Thread::sleep($this->cooldown);
+            }
+        });
+
+        $this->worker->submit(function () {
+            while (true) {
+                $button = $this->getLayout()->lookup('.dn-add-tab-button');
+
+                if ($button !== null) {
+                    $button->graphic = null;
+                    // $button->parent->style = "-fx-border-color: transparent; -fx-background-color: transparent;";
+                    //return;
+                }
+
+                sleep(2);
             }
         });
 

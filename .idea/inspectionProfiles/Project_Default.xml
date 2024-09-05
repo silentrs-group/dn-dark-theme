@@ -8,7 +8,7 @@
       <option name="myIgnoreVendorSpecificProperties" value="false" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="30">
+          <list size="31">
             <item index="0" class="java.lang.String" itemvalue="-fx-base" />
             <item index="1" class="java.lang.String" itemvalue="-fx-background" />
             <item index="2" class="java.lang.String" itemvalue="-fx-color" />
@@ -39,6 +39,7 @@
             <item index="27" class="java.lang.String" itemvalue="-fx-background-image" />
             <item index="28" class="java.lang.String" itemvalue="-fx-scroll-bar-color" />
             <item index="29" class="java.lang.String" itemvalue="-fx-list-item-color-alt" />
+            <item index="30" class="java.lang.String" itemvalue="-fx-background-repeat" />
           </list>
         </value>
       </option>

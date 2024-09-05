@@ -55,10 +55,56 @@
 
     /* @section scroll-bar */
     -fx-scroll-bar-background-color: transparent;
-    -fx-scroll-bar-thumb-color: derive(-fx-background, 50%);
+    -fx-scroll-bar-thumb-color: -fx-link-color/*derive(-fx-background, 50%)*/;
 
+    /* @section autocomplete */
+    -fx-dn-autocomplete-color: -fx-color;
 
+    /* @section dn-list-item (bundle, modules, forms etc) */
+    -fx-dn-list-item-color: derive(-fx-color, -10%);
+    -fx-dn-list-item-color-selected: -fx-base;
+    -fx-dn-list-item-border-color: -fx-link-color;
 
+    /* @section component list of component in form editor */
+    -fx-component-spoiler-color: -fx-control-inner-background-alt;
+    -fx-component-list-item-color: -fx-color;
+    -fx-component-list-item-border-color: #FFFFFF0F;
+    -fx-component-list-item-border-color-selected: -fx-link-color;
+
+    -fx-component-list-item-hover-color: derive(-fx-color, -30%);
+
+    /* @section component in project tab connected bundles */
+    -fx-bundle-list-item-color: transparent;
+    -fx-bundle-list-item-border-color: -fx-link-color;
+
+    /* @section project list-view */
+    -fx-project-color: -fx-color;
+    -fx-project-list-item-odd: rgba(0, 0, 0, 0.15);
+    -fx-project-list-item-selected: #FFFFFF4F;
+    -fx-project-list-item-title-text-color: -fx-light-text-color;
+    -fx-project-list-item-description-text-color: #FFFFFF9f;
+    -fx-project-list-item-count-color: rgba(255, 255, 255, 0.4);
+    -fx-project-list-item-count-text-color: white;
+
+    /* @section container with items (bundle, modules, forms etc) */
+    -fx-container-list-color: -fx-control-inner-background;
+    -fx-container-list-border-color: -border-color;
+
+    /* @section output console */
+    -fx-console-color: derive(-fx-base, 80%);
+    -fx-console-border-color: -fx-control-inner-background;
+
+    /* @section autocomplete list */
+    -fx-autocomplete-list-color: derive(-fx-base, 80%);
+    -fx-autocomplete-list-border-color: -fx-control-inner-background;
+
+    /* @section other */
+    -fx-flat-button-color: derive(-fx-color, 20%);
+    -fx-syncpane-container-color: -fx-color;
+    -fx-syncpane-text-color: -fx-light-text-color;
+    -fx-dn-designer-color: -fx-base;
+    -fx-dn-tree-selected-color: rgba(255, 255, 255, 0.15);
+    -fx-dn-tree-selected-text-color: white;
 
 
     -border-color: derive(-fx-background, 30%);
@@ -87,35 +133,37 @@
     -fx-prompt-text-fill: transparent;
 }
 
-
-/* autocomplite */
 .dn-autocomplete,
 .dn-autocomplete-description,
 .doc-entry {
-    -fx-background-color: -fx-base !important;
+    -fx-background-color: -fx-dn-autocomplete-color !important;
 }
 
-.dn-simple-toggle-button,
-.dn-anchor-pane,
-.dn-tab-pane,
-.dn-tab-pane .tab:selected,
-.dn-tab-pane .tab-content-area,
-.dn-mosaic-background {
-    -fx-background-color: -fx-color;
+.dn-autocomplete {
+    -fx-border-color: -border-color !important;
+}
+
+.dn-simple-toggle-button {
+    -fx-background-color: -fx-component-list-item-color;
 }
 
 /* Список компонентов в конструкоре формы, элементы списка (модули, формы, пакеты) */
 .dn-simple-toggle-button {
-    -fx-border-color: #FFFFFF0F;
+    -fx-border-color: -fx-component-list-item-border-color;
+}
+
+.dn-simple-toggle-button:selected {
+    -fx-border-color: -fx-component-list-item-border-color-selected;
 }
 
 #content .dn-simple-toggle-button {
-    -fx-border-color: -fx-link-color;
+    -fx-background-color: -fx-bundle-list-item-color;
+    -fx-border-color: -fx-bundle-list-item-border-color;
     -fx-border-width: 0 0 1 0;
 }
 
 .dn-simple-toggle-button:hover {
-    -fx-background-color: derive(-fx-color, 30%);
+    -fx-background-color: -fx-component-list-item-hover-color;
 }
 
 .scroll-pane,
@@ -123,12 +171,6 @@
     -fx-background-color: -fx-base;
 }
 
-
-/* вроде как класс существет, а вот стили не применяются */
-.scroll-pane.dn-web > .viewport {
-    -fx-background-color: green !important;
-    -fx-text-fill: green !important;
-}
 
 .tree-cell .tree-disclosure-node > .arrow {
     -fx-background-color: -fx-light-text-color;
@@ -144,16 +186,9 @@
 }
 
 .tree-view .tree-cell:filled:selected {
-    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-color: -fx-dn-tree-selected-color;
+    -fx-text-fill: -fx-dn-tree-selected-text-color;
 }
-
-/*#bottomSpoiler {
-    -fx-border-color: transparent;
-}*/
-/*#bottomSpoiler * {
-    -fx-background-color: -fx-color !important;
-    -fx-text-fill: -fx-light-text-color;
-}*/
 
 /* fix check box mark */
 #bottomSpoiler .check-box .mark {
@@ -169,11 +204,15 @@
     -fx-background-color: -fx-base !important;
 }
 
-.dn-console-list,
-#consoleArea /* контейнер с консолью вывода приложения при его запуске */
+#consoleArea
 {
-    -fx-background-color: derive(-fx-base, 80%) !important;
-    -fx-border-color: -fx-control-inner-background;
+    -fx-background-color: -fx-console-color !important;
+    -fx-border-color: -fx-console-border-color;
+}
+
+.dn-console-list {
+    -fx-background-color: -fx-autocomplete-list-color !important;
+    -fx-border-color: -fx-autocomplete-list-border-color;
 }
 
 /*
@@ -193,26 +232,34 @@
 
 /*
     .syncPane класс который существует только в этом коде и
-    котоырй применяется к элементам во вкладке "проект"
+    который применяется к элементам во вкладке "проект"
  */
 
 #projectNameLabel,
 #projectDirLabel,
 .syncPane *,
 .syncPane {
-    -fx-background-color: -fx-color !important;
+    -fx-background-color: -fx-syncpane-container-color !important;
     -fx-border-width: 0;
-    -fx-text-fill: -fx-light-text-color !important;
+    -fx-text-fill: -fx-syncpane-text-color !important;
 }
 
-/*
-    из названия все понятно (задний фон редактора форм)
- */
-
 .dn-add-tab-button {
-    -fx-background-color: transparent;
-    -fx-graphic: url("../img/icons/add-24.png") !important;
-    -fx-opacity: 0.7;
+    -fx-graphic: null !important;
+    -fx-shape: "M12 8V16M16 12H8M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" !important;
+    -fx-border-color: -fx-link-color !important;
+    -fx-border-width: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-width: 15 !important;
+    -fx-pref-height: 22 !important;
+    -fx-min-width: 22 !important;
+    -fx-min-height: 22 !important;
+
+    -fx-opacity: 0.7 !important;
+}
+
+.dn-add-tab-button * {
+    -fx-graphic: null !important;
 }
 
 .dn-add-tab-button:hover {
@@ -230,9 +277,9 @@
 
 /* items in project tab (bundle, modules, forms etc) */
 .dn-list-item {
-    -fx-border-color: -fx-link-color !important;
+    -fx-border-color: -fx-dn-list-item-border-color !important;
     -fx-border-width: 0 0 2 0 !important;
-    -fx-background-color: derive(-fx-color, -10%) !important;
+    -fx-background-color: -fx-dn-list-item-color !important;
 }
 
 .dn-list-item * {
@@ -240,79 +287,77 @@
 }
 
 .selected {
-    -fx-background-color: -fx-base !important;
+    -fx-background-color: -fx-dn-list-item-color-selected !important;
     -fx-border-width: 1 1 2 1 !important;
 }
 
 .list-view .list-cell:odd {
-    -fx-background-color: rgba(0, 0, 0, 0.15);
+    -fx-background-color: -fx-project-list-item-odd;
 }
 
 .list-view .list-cell:selected {
-    -fx-background-color: #FFFFFF4F !important;
+    -fx-background-color: -fx-project-list-item-selected !important;
 }
 
 /* category spoiler */
-.title {
-    -fx-background-color: -fx-control-inner-background-alt !important;
+.titled-pane > .title {
+    -fx-background-color: -fx-component-spoiler-color;
 }
 
-.content {
+/* category content */
+.titled-pane > .content {
     -fx-border-width: 0 0 1 0;
-    -fx-border-color: derive(-fx-color, -20) !important;
 }
 
-.content *.list-cell:odd {
-    -fx-background-color: rgba(0, 0, 0, 0);
+.titled-pane > .content *.list-cell:odd {
+    -fx-background-color: transparent;
 }
 
-.content *:focused,
-.content *:selected {
-    -fx-background-color: rgba(0, 0, 0, 0) !important;
+.titled-pane > .content *:focused,
+.titled-pane > .content *:selected {
+    -fx-background-color: transparent !important;
 }
 
 #list,
 .flat-button,
 #loginButton {
-    -fx-background-color: derive(-fx-color, 20%) !important;
+    -fx-background-color: -fx-flat-button-color !important;
 }
 
 .flat-button:hover {
     -fx-opacity: 0.7;
 }
 
-
 /* listview во вкладке Проект */
 .dn-list-menu {
-    /*-fx-background-color: red !important;*/
+    -fx-background-color: -fx-project-color !important;
 }
 
-.dn-list-menu  *.dn-list-menu-title {
-    -fx-text-fill: -fx-light-text-color;
+.dn-list-menu *.dn-list-menu-title {
+    -fx-text-fill: -fx-project-list-item-title-text-color;
 }
 
-.dn-list-menu  *.dn-list-menu-description {
-    -fx-text-fill: #FFFFFF9f;
+.dn-list-menu *.dn-list-menu-description {
+    -fx-text-fill: -fx-project-list-item-description-text-color;
 }
 
-.dn-list-menu  *.dn-list-menu-count {
+.dn-list-menu *.dn-list-menu-count {
     -fx-font-weight: bolder;
     -fx-alignment: center !important;
     -fx-min-width: 22;
+    -fx-background-color: -fx-project-list-item-count-color;
+    -fx-text-fill: -fx-project-list-item-count-text-color;
 }
 
-
 .flow-list-view {
-    -fx-background-color: -fx-control-inner-background;
-    -fx-border-color: -border-color;
+    -fx-background-color: -fx-container-list-color;
+    -fx-border-color: -fx-container-list-border-color;
 }
 
 .x-system-designer-element {
-    -fx-background-color: -fx-base !important;
+    -fx-background-color: -fx-dn-designer-color !important;
 }
 
-.dn-autocomplete {
-    -fx-border-color: -border-color !important;
+.tree {
+    -fx-border-color: transparent, transparent;
 }
-
-
