@@ -5,10 +5,12 @@ deps:
 
 devDeps:
   dn-bundle-plugin: '*'
+  jphp-core: '*'
+  jphp-zend-ext: '*'
 
 develnext-bundle:
-  version: 1.0.0
-  name: dn-dark-theme
+  version: '%version%'
+  name: '%name%'
   author: silentrs
   icon: icons\icon32.png
   hidden: '1'

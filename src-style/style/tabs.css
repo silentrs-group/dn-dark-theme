@@ -1,61 +1,138 @@
 
 .dn-file-tab-pane,
 .dn-file-tab-pane .tab-content-area,
+.dn-style,
 #fileTabPane,
 #fileTabPane .tab-header-area .tab-header-background,
 #fileTabPane .tab-content-area {
     -fx-background-color: -fx-color !important;
-    -fx-border-color: -fx-control-inner-background-alt;
+    -fx-border-color: -fx-control-inner-background-alt !important;
+    -fx-border-width: 0 0 4 0;
 }
 
-#fileTabPane .tab-header-area > .headers-region > .tab {
-    -fx-border-radius: 5 5 0 0 !important;
-    -fx-background-radius: 5 5 0 0 !important;
+/* fix табов внутри табов (вкладок файлов) */
+#fileTabPane .tab-pane .tab {
+    -fx-border-color: transparent !important;
+}
 
-    -fx-border-width: 1 1 0 1;
-    -fx-border-color: transparent;
+.dn-style .tab-header-area > .headers-region > .tab,
+#fileTabPane .tab-header-area > .headers-region > .tab {
+    -fx-padding: 3 3 4 3; /* change values too in customIcons/tab/ProjectTab.php */
+    -fx-border-radius: 3 3 0 0;
+    -fx-background-radius: 3 3 0 0 !important;
+
+    /*-fx-border-width: 1 1 0 1;*/
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: -fx-tab-active-color;
 
     -fx-background-color: transparent;
+    -fx-border-insets: 3 3 5 3;
+    -fx-background-insets: -15 0;
 }
 
 
+.dn-style .tab-header-area > .headers-region > .tab:selected,
 #fileTabPane .tab-header-area > .headers-region > .tab:selected {
     -fx-background-color: -fx-tab-active-color;
-    -fx-border-color: -fx-tab-active-border-color;
+    -fx-border-color: -fx-tab-active-color;
+    /*-fx-border-color: -fx-tab-active-border-color;*/
 }
 
+.dn-style .tab-header-area > .headers-region > .tab:hover,
 #fileTabPane .tab-header-area > .headers-region > .tab:hover {
     -fx-background-color: -fx-tab-inactive-color-hover;
-    -fx-border-color: -fx-tab-inactive-border-color-hover;
+    /*-fx-border-color: -fx-tab-inactive-border-color-hover;*/
 }
 
+.dn-style .tab-header-area > .headers-region > .control-buttons-tab,
 #fileTabPane .tab-header-area > .headers-region > .control-buttons-tab {
     -fx-border-color: rgba(255, 255, 255, 0.2);
     -fx-background-color: -fx-tab-active-color;
 }
 
+.dn-style .tab-header-area > .headers-region > .tab:selected,
 #fileTabPane .tab-header-area > .headers-region > .tab:selected,
+.dn-style .tab-header-area > .headers-region > .control-buttons-tab,
 #fileTabPane .tab-header-area > .headers-region > .control-buttons-tab,
+.dn-style .tab-header-area > .headers-region > .tab:hover,
 #fileTabPane .tab-header-area > .headers-region > .tab:hover {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
 
+.dn-style .control-buttons-tab > .container > .tab-down-button,
 #fileTabPane .control-buttons-tab > .container > .tab-down-button * {
     -fx-text-fill: -fx-tab-active-text-color !important;
 }
 
 
+.dn-style .tab .tab-label,
 #fileTabPane .tab .tab-label {
     -fx-text-fill: -fx-tab-inactive-text-color;
     -fx-padding: 4 5;
 }
 
+.dn-style .tab:hover .tab-label,
 #fileTabPane .tab:hover .tab-label {
     -fx-text-fill: -fx-tab-inactive-text-color-hover;
 }
 
+.dn-style .tab:selected .tab-label,
 #fileTabPane .tab:selected .tab-label {
     -fx-text-fill: -fx-tab-active-text-color;
+}
+
+#tabPane > .tab-content-area,
+#tabPane > * {
+    -fx-background-color: transparent !important;
+    -fx-border-color: -fx-border;
+}
+#tabPane > .tab-content-area {
+    -fx-border-width: 0 !important;
+}
+
+.tab-pane .tab {
+    /*-fx-padding: 3 3 5 3 !important;*/
+}
+
+.tab-pane .tab .tab-close-button {
+    -fx-opacity: 0;
+}
+.tab-pane .tab:selected .tab-close-button,
+.tab-pane .tab:hover .tab-close-button {
+    -fx-opacity: 1;
+}
+
+
+
+/*#tabPane *,
+#tabPane > .tab-content-area #projectList,
+#tabPane > .tab-content-area #projectList *,
+#tabPane > .tab-content-area #projectList .viewport,
+#tabPane > .tab-content-area #projectList .viewport *,
+#tabPane > .tab-content-area .scroll-pane,
+#tabPane > .tab-content-area .scroll-pane .viewport *,
+#tabPane > .tab-content-area .scroll-pane .viewport {
+    -fx-fill: red !important;
+    -fx-border-color: red;
+    -fx-background-color: red !important;
+}*/
+
+
+
+.flow-list-view,
+.dn-scroll-pane .flow-list-view,
+#projectList .viewport > FlowPane {
+    -fx-hgap: 5 !important;
+    -fx-vgap: 5 !important;
+    -fx-border-style: dashed;
+    -fx-border-width: 1px !important;
+    -fx-border-color: #0000000F !important;
+    -fx-padding: 10px !important;
+}
+
+#projectList,
+#projectList .viewport {
+    -fx-fit-to-width: true !important;
 }
