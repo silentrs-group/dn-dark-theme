@@ -6,11 +6,14 @@
 @import "menu-bar.css";
 @import "tabs.css";
 @import "scroll-bar.css";
+@import "customIcons.css";
 
 /* Redefine base colors */
 .root {
     -fx-base: #272B33;
     -fx-background: #272B33;
+
+    -fx-background-color: -fx-base;
 
     /* make controls (buttons, thumb, etc.) slightly lighter */
     -fx-color: derive(-fx-base, 10%);
@@ -55,7 +58,7 @@
 
     /* @section scroll-bar */
     -fx-scroll-bar-background-color: transparent;
-    -fx-scroll-bar-thumb-color: -fx-link-color/*derive(-fx-background, 50%)*/;
+    -fx-scroll-bar-thumb-color: -fx-tab-active-border-color /*-fx-link-color/*derive(-fx-background, 50%)*/;
 
     /* @section autocomplete */
     -fx-dn-autocomplete-color: -fx-color;
@@ -176,15 +179,44 @@
     -fx-background-color: -fx-light-text-color;
 }
 
+.tree-cell {
+    -fx-padding: 5 8;
+}
+
+.tree-cell:even {
+    -fx-background-color: rgba(255, 255, 255, 0.01);
+}
+
 .spinner .increment-arrow-button .increment-arrow,
 .spinner .decrement-arrow-button .decrement-arrow {
     -fx-background-color: -text-color;
 }
 
+
 .check-box .box {
-    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-background-color: transparent;
+    -fx-border-color: derive(-fx-base, 50%);
 }
 
+.check-box .box .mark {
+    -fx-border-color: transparent;
+}
+
+.check-box:selected .box .mark {
+    -fx-background-color: derive(-fx-base, 50%);
+    -fx-border-color: derive(-fx-base, 50%);
+}
+
+.check-box:hover:selected .box .mark {
+    -fx-background-color: derive(-fx-base, 100%);
+    -fx-border-color: derive(-fx-base, 100%);
+}
+
+.tree-view {
+    -fx-border-color: -fx-base;
+}
 .tree-view .tree-cell:filled:selected {
     -fx-background-color: -fx-dn-tree-selected-color;
     -fx-text-fill: -fx-dn-tree-selected-text-color;
@@ -201,11 +233,10 @@
 }
 
 .separator {
-    -fx-background-color: -fx-base !important;
+    -fx-background-color: derive(-border-color, -20%);
 }
 
-#consoleArea
-{
+#consoleArea {
     -fx-background-color: -fx-console-color !important;
     -fx-border-color: -fx-console-border-color;
 }
@@ -314,7 +345,8 @@
 }
 
 .titled-pane > .content *:focused,
-.titled-pane > .content *:selected {
+.titled-pane > .content *:selected,
+.titled-pane > .content .text-field {
     -fx-background-color: transparent !important;
 }
 
@@ -356,6 +388,17 @@
 
 .x-system-designer-element {
     -fx-background-color: -fx-dn-designer-color !important;
+}
+
+.button {
+    -fx-padding: 5 5;
+    -fx-background-color: -fx-flat-button-color;
+    -fx-alignment: CENTER;
+}
+
+.text-field {
+    -fx-padding: 5 5;
+    -fx-border-color: -border-color;
 }
 
 .tree {
